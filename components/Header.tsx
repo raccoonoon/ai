@@ -30,6 +30,7 @@ export function Header() {
             <Link
               key={href}
               href={href}
+              aria-current={pathname === href ? 'page' : undefined}
               className={`rounded-full px-3 py-2 transition-colors duration-200 hover:bg-primary-light/30 ${
                 pathname === href ? 'bg-primary-light/60 text-primary-dark' : 'text-slate-700'
               }`}
@@ -64,6 +65,7 @@ export function Header() {
                 <Link
                   href={href}
                   onClick={closeMenu}
+                  aria-current={pathname === href ? 'page' : undefined}
                   className={`block rounded-md px-3 py-2 text-sm font-medium transition hover:bg-primary-light/40 ${
                     pathname === href ? 'bg-primary-light/60 text-primary-dark' : 'text-slate-700'
                   }`}
