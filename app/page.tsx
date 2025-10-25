@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: '홈'
+  title: '홈',
+  description: '20대 취준생을 위한 1회 무료 자소서 첨삭 이벤트와 주요 서비스 혜택을 소개합니다.'
 };
 
 const featureCards = [
@@ -18,11 +19,11 @@ const featureCards = [
     title: '유료 전환 가이드',
     description: '무료 이후 유료 전환 시 차별화 전략, 면접 대비 자료까지 맞춤 가이드로 도와드립니다.'
   }
-];
+] as const;
 
-export default function HomePage() {
+export default function Page() {
   return (
-    <div className="mx-auto flex w-full max-w-6xl flex-col gap-16 px-4 py-16 sm:px-6 sm:py-20">
+    <main className="mx-auto flex w-full max-w-6xl flex-col gap-16 px-4 py-16 sm:px-6 sm:py-20">
       <section className="relative isolate overflow-hidden rounded-3xl bg-gradient-to-r from-primary-light/40 via-white to-primary-light/40 px-6 py-16 text-center shadow-lg sm:px-16">
         <div className="mx-auto max-w-3xl space-y-6">
           <p className="text-sm font-semibold uppercase tracking-wide text-primary-dark">20대 취준생 전용</p>
@@ -60,6 +61,6 @@ export default function HomePage() {
           </article>
         ))}
       </section>
-    </div>
+    </main>
   );
 }
