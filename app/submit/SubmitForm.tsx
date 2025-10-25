@@ -88,8 +88,9 @@ export function SubmitForm() {
     <>
       {toast && (
         <div
-          role="status"
-          aria-live="polite"
+          role={toast.tone === 'error' ? 'alert' : 'status'}
+          aria-live={toast.tone === 'error' ? 'assertive' : 'polite'}
+          aria-atomic="true"
           className={`mt-6 flex items-start gap-3 rounded-2xl border p-4 text-sm shadow-sm ${
             toast.tone === 'success'
               ? 'border-emerald-200 bg-emerald-50 text-emerald-700'
@@ -97,15 +98,24 @@ export function SubmitForm() {
           }`}
         >
           <span className="font-semibold">{toast.tone === 'success' ? '완료' : '오류'}</span>
-          <span>{toast.message}</span>
+          <span className="flex-1">{toast.message}</span>
           {toast.tone === 'success' && (
             <Link
-              href="/login"
-              className="ml-auto rounded-full bg-white px-3 py-1 text-xs font-semibold text-primary-dark shadow-sm ring-1 ring-primary-light transition hover:bg-primary-light/40"
+              href="/submissions"
+              className="ml-auto inline-flex items-center gap-1 rounded-full bg-white px-3 py-1 text-xs font-semibold text-primary-dark shadow-sm ring-1 ring-primary-light transition hover:bg-primary-light/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-dark/50"
             >
-              내 제출 내역 보기
+              <span aria-hidden>📄</span>
+              <span>내 제출 내역 보기</span>
             </Link>
           )}
+          <button
+            type="button"
+            onClick={() => setToast(null)}
+            className="-mr-1 -mt-1 rounded-full p-1 text-xs text-slate-500 transition hover:bg-white/80 hover:text-slate-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-dark/40"
+            aria-label="알림 닫기"
+          >
+            <span aria-hidden>✕</span>
+          </button>
         </div>
       )}
 
